@@ -91,6 +91,8 @@ function newNote() {
 
 $(document).ready(function() {
 
+    console.log('hello');
+
     $("#board").height($(document).height());
 
     $("#add_new").click(newNote);
