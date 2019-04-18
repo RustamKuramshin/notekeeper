@@ -36,11 +36,11 @@
                 };
 
                 var val = self.value.replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/&/g, '&amp;')
-                    .replace(/\n$/, '<br/>&nbsp;')
-                    .replace(/\n/g, '<br/>')
-                    .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/\n$/, '<br/>&nbsp;')
+                                    .replace(/\n/g, '<br/>')
+                                    .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
 
                 // Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
                 if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
@@ -62,12 +62,12 @@
 
 
 var noteTemp =  '<div class="note">'
-    +	'<a href="javascript:;" class="button remove">X</a>'
-    + 	'<div class="note_cnt">'
-    +		'<textarea class="title" placeholder="Enter note title"></textarea>'
-    + 		'<textarea class="cnt" placeholder="Enter note description here"></textarea>'
-    +	'</div> '
-    +'</div>';
+				+	'<a href="javascript:;" class="button remove">X</a>'
+				+ 	'<div class="note_cnt">'
+				+		'<textarea class="title" placeholder="Enter note title"></textarea>'
+				+ 		'<textarea class="cnt" placeholder="Enter note description here"></textarea>'
+				+	'</div> '
+				+'</div>';
 
 var noteZindex = 1;
 function deleteNote(){
@@ -75,30 +75,28 @@ function deleteNote(){
 };
 
 function newNote() {
-    $(noteTemp).hide().appendTo("#board").show("fade", 300).draggable().on('dragstart',
-        function(){
-            $(this).zIndex(++noteZindex);
-        });
-
-    $('.remove').click(deleteNote);
-    $('textarea').autogrow();
-
-    $('.note')
-    return false;
+  $(noteTemp).hide().appendTo("#board").show("fade", 300).draggable().on('dragstart',
+    function(){
+       $(this).zIndex(++noteZindex);
+    });
+ 
+	$('.remove').click(deleteNote);
+	$('textarea').autogrow();
+	
+  $('.note')
+	return false; 
 };
 
 
 
 $(document).ready(function() {
-
-    console.log('hello');
-
+    
     $("#board").height($(document).height());
-
+    
     $("#add_new").click(newNote);
-
+    
     $('.remove').click(deleteNote);
     newNote();
-
+	  
     return false;
 });
