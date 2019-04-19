@@ -11,12 +11,12 @@ $redirect = function ($req, $res) {
         $uri = 'http://';
     }
     $uri .= $_SERVER['HTTP_HOST'].'/notekeeper';
-    header('Location: '.$uri.'/www/');
+    header('Location: '.$uri.'/www/index.html');
     exit;
 };
 
 $router->get('/', $redirect);
-$router->get('www', $redirect);
+//$router->get('www', $redirect);
 
 $router->get('notes', function ($req, $res) {
     $noteID = $req->query['id'];
