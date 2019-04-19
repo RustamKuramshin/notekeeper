@@ -77,7 +77,9 @@ class Router
 
         $action = $action_map[$formatedRoute];
 
-        if ($action) call_user_func_array($action, array($this->req, $this->res));
+        if ($action) {
+            if ($action) call_user_func_array($action, array($this->req, $this->res));
+        }
 
     }
 

@@ -1,9 +1,10 @@
 <?php
+
 require_once "./lib/rest_controller.php";
 
 $router = new Router();
 
-$router->get('/', function ($req, $res) {
+$redirect = function ($req, $res) {
     if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
         $uri = 'https://';
     } else {
@@ -12,7 +13,10 @@ $router->get('/', function ($req, $res) {
     $uri .= $_SERVER['HTTP_HOST'].'/notekeeper';
     header('Location: '.$uri.'/www/');
     exit;
-});
+};
+
+$router->get('/', $redirect);
+$router->get('www', $redirect);
 
 $router->get('notes', function ($req, $res) {
     $noteID = $req->query['id'];
